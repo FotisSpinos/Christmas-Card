@@ -13,6 +13,8 @@
     <script src="DrawObj.js"></script>
     <script src="PhysicsObject.js"></script>
     <script src="Snowflake.js"></script>
+    <script src="SnowCollection.js"></script>
+
 
 
     <link rel="stylesheet" href="ChristmasCard.css">
@@ -35,10 +37,15 @@
     let backgroundImage = document.getElementById("BackgroundImage");
 
 
-    let sceneObjs = [new Snowflake(new Vector2D(0, 10), 10, 10),
-    new Snowflake(new Vector2D(50, 10), 10, 10),
-    new Snowflake(new Vector2D(100, 10), 10, 10),
-    new Snowflake(new Vector2D(2000, 10), 10, 10)];
+    let sceneObjs = []; 
+    // = 
+    // [new Snowflake(new Vector2D(0, 10), 10, 10),
+    // new Snowflake(new Vector2D(50, 10), 10, 10),
+    // new Snowflake(new Vector2D(100, 10), 10, 10),
+    // new Snowflake(new Vector2D(2000, 10), 10, 10)];
+
+    let snowCollection = new SnowCollection(100, 10, 10);
+    sceneObjs = (snowCollection.snowflakes);
 
     gameLoop();
 
