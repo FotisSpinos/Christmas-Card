@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Cristmas Card!</title>
+
+</head>
+
+<body id="MainBody">
+    <canvas id="MainCanvas" width="1000" height="1000"></canvas>
+
+    <script src="Vector2D.js"></script>
+    <script src="CanvasRenderingContextExtensions.js"></script>
+    <script src="DrawObj.js"></script>
+    <script src="PhysicsObject.js"></script>
+    <script src="Snowflake.js"></script>
+
+
+    <link rel="stylesheet" href="ChristmasCard.css">
+
+    <img id="BackgroundImage" src="../Assets/background.webp" style="display: none;" />
+</body>
+
+<script>
+    const frameRate = 33;
+    let deltaTime = 0;
+
+    const body = document.getElementById("MainBody");
+    const canvas = document.getElementById("MainCanvas");
+
+    canvas.width = document.documentElement.clientWidth;
+    canvas.height = document.documentElement.clientHeight;
+
+    let ctx = canvas.getContext("2d");
+
+    let backgroundImage = document.getElementById("BackgroundImage");
+
+
+    let sceneObjs = [new Snowflake(new Vector2D(0, 10), 10, 10),
+    new Snowflake(new Vector2D(50, 10), 10, 10),
+    new Snowflake(new Vector2D(100, 10), 10, 10),
+    new Snowflake(new Vector2D(2000, 10), 10, 10)];
+
+    gameLoop();
+
+    function gameLoop() {
+        ctx.clearCanvas();
+        ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+
+        deltaTime = frameRate / 1000;
+
+        // hack to place text at center
+        let message = 'Happy new year!';
+        ctx.drawText(message,
+            canvas.width / 2 - 13 * message.length, canvas.height / 4,
+            "#FF0000",
+            true,
+            '60px Cursive');
+
+        sceneObjs.forEach(element => element.update(deltaTime))
+        sceneObjs.forEach(element => element.render())
+
+        setInterval(gameLoop, frameRate);
+    }
+
+</script>
+
+</html>
