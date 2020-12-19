@@ -14,6 +14,6 @@ class PhysicsObject {
     }
 
     applyForce(force) {
-        this.acceleration = force / this.mass;
+        this.acceleration = force.scale(1 / this.mass);
     }
 }

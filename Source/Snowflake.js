@@ -1,5 +1,5 @@
 class Snowflake extends DrawObj {
-    constructor(position, minSize, maxSize) {
+    constructor(src, position, minSize, maxSize) {
         super();
         this.position = position;
         this.size = 0;
@@ -12,7 +12,7 @@ class Snowflake extends DrawObj {
         this.physicsObj.velocity = new Vector2D(0, 10);
 
         this.image = new Image(1, 1);
-        this.image.src = '../Assets/Snowflake.png';
+        this.image.src = src;
     }
 
     update(deltaTime) {
@@ -23,12 +23,12 @@ class Snowflake extends DrawObj {
             this.reset();
     }
 
-    render() {
+    render(ctx) {
         ctx.drawImage(this.image, this.position.x, this.position.y, this.size, this.size);
     }
 
     reset() {
-        this.position.y = 0;
+        this.position.y = -20;
         this.position.x = Math.random() * canvas.width;
 
         this.randomizeSize();

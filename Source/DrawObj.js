@@ -1,13 +1,7 @@
 class DrawObj {
-    constructor() {
+    constructor() {}
 
-    }
+    update(deltaTime) {}
 
-    update() {
-
-    }
-
-    render() {
-
-    }
+    render(ctx) {}
 }

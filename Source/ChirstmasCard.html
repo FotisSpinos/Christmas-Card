@@ -16,14 +16,13 @@
     <script src="SnowCollection.js"></script>
 
 
+    <script src="configurations.js"></script>
 
     <link rel="stylesheet" href="ChristmasCard.css">
-
-    <img id="BackgroundImage" src="../Assets/background.webp" style="display: none;" />
 </body>
 
 <script>
-    const frameRate = 33;
+    const frameRate = settings.RefeashRate;
     let deltaTime = 0;
 
     const body = document.getElementById("MainBody");
@@ -34,18 +33,17 @@
 
     let ctx = canvas.getContext("2d");
 
-    let backgroundImage = document.getElementById("BackgroundImage");
+    let backgroundImage = new Image();
+    backgroundImage.src = assets.backgroundSrc;
 
+    let sceneObjs = [];
 
-    let sceneObjs = []; 
-    // = 
-    // [new Snowflake(new Vector2D(0, 10), 10, 10),
-    // new Snowflake(new Vector2D(50, 10), 10, 10),
-    // new Snowflake(new Vector2D(100, 10), 10, 10),
-    // new Snowflake(new Vector2D(2000, 10), 10, 10)];
-
-    let snowCollection = new SnowCollection(100, 10, 10);
+    let snowflakeSrc = assets.snowflakeSrc;
+    let snowCollection = new SnowCollection(snowflakeSrc, 200, 10, 35);
     sceneObjs = (snowCollection.snowflakes);
+
+    let audio = new Audio(assets.audioSrc);
+    audio.play();
 
     gameLoop();
 
@@ -64,7 +62,7 @@
             '60px Cursive');
 
         sceneObjs.forEach(element => element.update(deltaTime))
-        sceneObjs.forEach(element => element.render())
+        sceneObjs.forEach(element => element.render(ctx))
 
         setInterval(gameLoop, frameRate);
     }
