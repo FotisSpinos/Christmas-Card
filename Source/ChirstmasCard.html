@@ -74,23 +74,24 @@
         setInterval(gameLoop, frameRate);
     }
 
+
     function updateContainer() {
 
         let width = window.innerWidth;
         let height = window.innerHeight;
 
-        var widthToHeight = settings.aspectRatio;
+        var aspectRatio = settings.aspectRatio;
         var currentWidthToHeight = window.innerWidth / window.innerHeight;
 
         var container = document.getElementById("container");
 
         if (currentWidthToHeight > widthToHeight) {
             // window width is too wide relative to desired game width
-            width = height * widthToHeight;
+            width = height * aspectRatio;
             container.style.height = height + 'px';
             container.style.width = width + 'px';
         } else { // window height is too high relative to desired game height
-            height = width / widthToHeight;
+            height = width / aspectRatio;
             container.style.width = width + 'px';
             container.style.height = height + 'px';
         }
@@ -99,7 +100,11 @@
         container.style.marginLeft = (-width / 2) + 'px';
     }
 
-
+/*
+ SOURCES & CREDITS
+    // The code for applying the aspect ratio was taken from the case study found:
+    // https://www.html5rocks.com/en/tutorials/casestudies/gopherwoord-studios-resizing-html5-games/
+*/
 </script>
 
 </html>
