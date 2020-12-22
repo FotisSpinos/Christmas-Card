@@ -85,7 +85,7 @@
 
         var container = document.getElementById("container");
 
-        if (currentWidthToHeight > widthToHeight) {
+        if (currentWidthToHeight > aspectRatio) {
             // window width is too wide relative to desired game width
             width = height * aspectRatio;
             container.style.height = height + 'px';
