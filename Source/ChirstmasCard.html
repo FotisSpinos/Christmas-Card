@@ -31,6 +31,8 @@
     var body = document.getElementById("MainBody");
     var canvas = document.getElementById("MainCanvas");
 
+    var container = document.getElementById("container");
+
     window.addEventListener('resize', () => {
         updateContainer();
     });
@@ -43,7 +45,7 @@
     let sceneObjs = [];
 
     let snowflakeSrc = assets.snowflakeSrc;
-    let snowCollection = new SnowCollection(snowflakeSrc, 200, 10, 35);
+    let snowCollection = new SnowCollection(snowflakeSrc, 1, 10, 35);
     sceneObjs = (snowCollection.snowflakes);
 
     let audio = new Audio(assets.audioSrc);
@@ -81,11 +83,10 @@
         let height = window.innerHeight;
 
         var aspectRatio = settings.aspectRatio;
-        var currentWidthToHeight = window.innerWidth / window.innerHeight;
+        var currentWidthToHeight = width / height;
 
-        var container = document.getElementById("container");
 
-        if (currentWidthToHeight > aspectRatio) {
+        if (currentWidthToHeight >= aspectRatio) {
             // window width is too wide relative to desired game width
             width = height * aspectRatio;
             container.style.height = height + 'px';
@@ -100,11 +101,30 @@
         container.style.marginLeft = (-width / 2) + 'px';
     }
 
-/*
- SOURCES & CREDITS
-    // The code for applying the aspect ratio was taken from the case study found:
-    // https://www.html5rocks.com/en/tutorials/casestudies/gopherwoord-studios-resizing-html5-games/
-*/
+    container.addEventListener('mousedown', function (clickedElement) {
+        let cursorPos = getCursorPosition(clickedElement);
+        snowCollection.repulse(cursorPos, 500, 0.1);
+    })
+
+    function getCursorPosition(clickedElement) {
+        const rect = container.getBoundingClientRect()
+
+        x = canvas.width * (clickedElement.clientX - rect.left) / (rect.right - rect.left);
+        y = canvas.height * (clickedElement.clientY - rect.top) / (rect.bottom - rect.top);
+
+        return new Vector2D(x, y);
+    }
+
+
+    /*
+    SOURCES & CREDITS
+        // The code for applying the aspect ratio was taken from the case study: Case Study: Auto-Resizing HTML5 Games:
+        // https://www.html5rocks.com/en/tutorials/casestudies/gopherwoord-studios-resizing-html5-games/
+
+        // the get cursor position was taken by: 
+        https://stackoverflow.com/questions/55677/how-do-i-get-the-coordinates-of-a-mouse-click-on-a-canvas-element/18053642#18053642
+    
+    */
 </script>
 
 </html>

@@ -13,21 +13,28 @@ class Vector2D {
         return new Vector2D(Math.random(), Math.random());
     }
 
-    add(addVec) {
-        let output = new Vector2D(0, 0);
+    add(vec) {
+        return new Vector2D(this.x + vec.x, this.y + vec.y);
+    }
 
-        let x = this.x + addVec.x;
-        let y = this.y + addVec.y;
-
-        output = new Vector2D(x, y);
-        return output;
+    subtract(vec) {
+        return new Vector2D(this.x - vec.x, this.y - vec.y);
     }
 
     scale(num) {
-        let output = new Vector2D(0, 0);
-        output.x = this.x * num;
-        output.y = this.y * num;
+        return new Vector2D(this.x * num, this.y * num);
+    }
 
-        return output;
+    magnitude() {
+        return Math.sqrt((this.x * this.x + this.y * this.y));
+    }
+
+    unit() {
+        let magnitude = this.magnitude();
+        return new Vector2D(this.x / magnitude, this.y / magnitude);
+    }
+
+    getString() {
+        return `${this.x}, ${this.y}`;
     }
 }

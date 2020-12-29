@@ -10,6 +10,7 @@ class Snowflake extends DrawObj {
 
         this.physicsObj = new PhysicsObject(1, this.position);
         this.physicsObj.velocity = new Vector2D(0, 10);
+        this.physicsObj.maxVelocity = 20.0;
 
         this.image = new Image(1, 1);
         this.image.src = src;
