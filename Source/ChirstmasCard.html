@@ -45,7 +45,7 @@
     let sceneObjs = [];
 
     let snowflakeSrc = assets.snowflakeSrc;
-    let snowCollection = new SnowCollection(snowflakeSrc, 1, 10, 35);
+    let snowCollection = new SnowCollection(snowflakeSrc, 100, 10, 35);
     sceneObjs = (snowCollection.snowflakes);
 
     let audio = new Audio(assets.audioSrc);
@@ -103,7 +103,7 @@
 
     container.addEventListener('mousedown', function (clickedElement) {
         let cursorPos = getCursorPosition(clickedElement);
-        snowCollection.repulse(cursorPos, 500, 0.1);
+        snowCollection.repulse(cursorPos, 500, 10);
     })
 
     function getCursorPosition(clickedElement) {
@@ -111,7 +111,6 @@
 
         x = canvas.width * (clickedElement.clientX - rect.left) / (rect.right - rect.left);
         y = canvas.height * (clickedElement.clientY - rect.top) / (rect.bottom - rect.top);
-
         return new Vector2D(x, y);
     }
 

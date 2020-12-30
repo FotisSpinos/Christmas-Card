@@ -21,16 +21,13 @@ class SnowCollection {
     repulse(point, range, strength) {
         this.snowflakes.forEach(snowflake => {
 
-            console.log('snowflake position: ' + snowflake.position.getString());
-            console.log('point pos: ' + point.getString())
-
             let pointToSnowflake = snowflake.position.subtract(point);
             let dir = pointToSnowflake.unit();
             let dist = pointToSnowflake.magnitude();
 
             if (dist < range) {
                 let force = dir.scale(dist * strength);
-                //console.log('Apply Force! ' + force.getString())
+
                 snowflake.physicsObj.applyForce(force);
             }
         })

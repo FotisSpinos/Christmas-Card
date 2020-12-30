@@ -34,7 +34,7 @@ class Vector2D {
         return new Vector2D(this.x / magnitude, this.y / magnitude);
     }
 
-    getString() {
+    toString() {
         return `${this.x}, ${this.y}`;
     }
 }
