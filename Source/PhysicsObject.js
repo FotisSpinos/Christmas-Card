@@ -18,7 +18,6 @@ class PhysicsObject {
         }
         else
             this.velocity = newVelocity.unit().scale(this.maxVelocity);
-
     }
 
     applyForce(force) {
