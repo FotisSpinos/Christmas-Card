@@ -6,7 +6,7 @@ class Vector2D {
     }
 
     static zero() {
-        return new Vector2D(0.0, 0.0);
+        return new Vector2D(0, 0);
     }
 
     static random() {

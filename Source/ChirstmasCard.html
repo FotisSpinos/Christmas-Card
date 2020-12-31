@@ -17,8 +17,6 @@
     <script src="PhysicsObject.js"></script>
     <script src="Snowflake.js"></script>
     <script src="SnowCollection.js"></script>
-
-
     <script src="configurations.js"></script>
 
     <link rel="stylesheet" href="ChristmasCard.css">
@@ -45,11 +43,15 @@
     let sceneObjs = [];
 
     let snowflakeSrc = assets.snowflakeSrc;
-    let snowCollection = new SnowCollection(snowflakeSrc, 100, 10, 35);
+    let snowCollection = new SnowCollection(snowflakeSrc, settings.snowflakeAmmount, settings.snowFlakeMinSize, settings.snowFlakeMaxSize);
     sceneObjs = (snowCollection.snowflakes);
+    snowCollection.useRandomWindForce(true);
 
     let audio = new Audio(assets.audioSrc);
     audio.play();
+
+
+    console.log(Vector2D.zero())
 
     updateContainer();
     gameLoop();
@@ -70,6 +72,8 @@
             true,
             '60px Cursive');
 
+        snowCollection.applyWindForce();
+
         sceneObjs.forEach(element => element.update(deltaTime))
         sceneObjs.forEach(element => element.render(ctx))
 
@@ -84,7 +88,6 @@
 
         var aspectRatio = settings.aspectRatio;
         var currentWidthToHeight = width / height;
-
 
         if (currentWidthToHeight >= aspectRatio) {
             // window width is too wide relative to desired game width
@@ -103,7 +106,7 @@
 
     container.addEventListener('mousedown', function (clickedElement) {
         let cursorPos = getCursorPosition(clickedElement);
-        snowCollection.repulse(cursorPos, 500, 10);
+        snowCollection.repulse(cursorPos, 500, 30);
     })
 
     function getCursorPosition(clickedElement) {

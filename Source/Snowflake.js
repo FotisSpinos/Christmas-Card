@@ -9,9 +9,9 @@ class Snowflake extends DrawObj {
         this.randomizeSize();
 
         this.physicsObj = new PhysicsObject(1, this.position);
-        this.physicsObj.velocity = new Vector2D(0, 10);
-        this.physicsObj.maxVelocity = 15.0;
-        this.physicsObj.maxAcceleration = 45.0;
+        this.physicsObj.velocity = new Vector2D(0, this.size / 10);
+        this.physicsObj.maxVelocity = this.size / 3.0;
+        this.physicsObj.maxAcceleration = this.size / 0.5;
 
         this.image = new Image(1, 1);
         this.image.src = src;
@@ -32,10 +32,10 @@ class Snowflake extends DrawObj {
     }
 
     reset() {
-        this.position.y = -20;
-        this.position.x = Math.random() * canvas.width;
-
         this.randomizeSize();
+        
+        this.position.y = -this.size;
+        this.position.x = Math.random() * canvas.width;
     }
 
     randomizeSize() {
