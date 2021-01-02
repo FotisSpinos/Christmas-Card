@@ -17,10 +17,6 @@ CanvasRenderingContext2D.prototype.drawFullCircle = function (x, y, radius, fill
     if (fill) this.fill();
 }
 
-CanvasRenderingContext2D.prototype.clearCanvas = function (canvas) {
-    this.clearRect(0, 0, canvas.width, canvas.height)
-}
-
 CanvasRenderingContext2D.prototype.clearCanvas = function () {
     this.clearRect(0, 0, canvas.width, canvas.height)
 }
