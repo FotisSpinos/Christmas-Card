@@ -54,9 +54,9 @@
     console.log(Vector2D.zero())
 
     updateContainer();
-    gameLoop();
+    window.requestAnimationFrame(gameLoop)
 
-    function gameLoop() {
+    function gameLoop(timestamp) {
         ctx.clearCanvas();
         ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
 
@@ -77,7 +77,7 @@
         sceneObjs.forEach(element => element.update(deltaTime))
         sceneObjs.forEach(element => element.render(ctx))
 
-        setInterval(gameLoop, frameRate);
+        window.requestAnimationFrame(gameLoop)
     }
 
 
