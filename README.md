@@ -2,6 +2,8 @@
 
 <p>A web-based christmas card developed with HTML and JavaScript. </p>
 
+# Screenshots
+![Screenshot](https://github.com/FotisSpinos/Christmas-Card/blob/main/Screenshots/screenshot.png)
 
 # Sources & Credits
 The logic for resizing the canvas using a fixed aspect ration is taken by the case study: Auto-Resizing HTML5 Games
