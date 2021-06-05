@@ -1,6 +1,6 @@
 # Christmas-Card
 
-<p>A web-based christmas card developed with HTML and JavaScript. </p>
+<p>A web-based Christmas card developed with HTML and JavaScript. </p>
 
 # Screenshots
 ![Screenshot](https://github.com/FotisSpinos/Christmas-Card/blob/main/Screenshots/screenshot.png)
