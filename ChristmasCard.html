@@ -51,8 +51,6 @@
     audio.play();
 
 
-    console.log(Vector2D.zero())
-
     updateContainer();
     window.requestAnimationFrame(gameLoop)
 
@@ -64,10 +62,12 @@
 
         updateContainer();
 
-        // hack to place text at center
         let message = 'Happy new year!';
+        ctx.textBaseline = 'middle';
+        ctx.textAlign = "center";
         ctx.drawText(message,
-            canvas.width / 2 - 13 * message.length, canvas.height / 4,
+            canvas.width / 2, 
+            canvas.height / 4,
             "#FF0000",
             true,
             '60px Cursive');
@@ -106,7 +106,7 @@
 
     container.addEventListener('mousedown', function (clickedElement) {
         let cursorPos = getCursorPosition(clickedElement);
-        snowCollection.repulse(cursorPos, 500, 30);
+        snowCollection.repulse(cursorPos, 1000, 30);
     })
 
     function getCursorPosition(clickedElement) {
