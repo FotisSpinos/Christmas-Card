@@ -59,6 +59,8 @@
 
     function gameLoop(timestamp) {
         
+        deltaTime = frameRate / 1000;
+
         // Clear canvas
         ctx.clearCanvas();
 
@@ -67,8 +69,6 @@
 
         // Update container using aspect ratio
         updateContainer();
-
-        deltaTime = frameRate / 1000;
 
         // Draw text at the center of the canvas
         let message = 'Happy new year!';
